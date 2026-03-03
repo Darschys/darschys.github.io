@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dario Scalabrino | Developer struppiato</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        tron: '#FF2D2D',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+    @font-face {
+        font-family: 'TRON';
+        src: url('TRON.TTF') format('truetype');
+    }
+
+    .tron-font {
+        font-family: 'TRON', sans-serif;
+        color: #FF2D2D;
+        text-shadow:
+            0 0 4px #FF2D2D,
+            0 0 10px rgba(255, 45, 45, 0.6);
+    }
+
+    /* FIX: scroll fluido garantito (anche se Tailwind fa il difficile) */
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+</head>
+
+<body class="font-inter bg-darker text-gray-200 scroll-smooth">
+
+    <!-- HEADER -->
+    <header class="lg:px-16 px-4 flex flex-wrap items-center py-4 shadow-lg">
+        <div class="flex-1 flex justify-between items-center">
+            <img src="Logo.png" alt="Logo" class="sm:w-[10rem] w-[7rem]">
+        </div>
+
+        <nav>
+            <ul class="md:flex items-center text-gray-100 space-x-6">
+                <li><a class="text-rose-500" href="#">Home</a></li>
+                <li><a class="hover:text-rose-500" href="studi.html">Studi</a></li>
+                <li><a class="hover:text-rose-500" href="esperienze.html">Esperienze</a></li>
+                <li><a class="hover:text-rose-500" href="progetti.html">Progetti</a></li>
+                <li><a class="hover:text-rose-500" href="#contatti">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="py-20">
+        <div class="absolute -z-10 top-32 left-20 w-96 h-96 bg-red-500/30 rounded-full blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+            <div>
+                <span
+                    class="inline-block px-3 py-1 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
+                    Developer struppiato
+                </span>
+
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+                    Hi, I'm <span class="tron-font">Dario</span>
+                </h1>
+
+                <p class="text-xl text-gray-400 mb-8 max-w-lg">
+                    ed ho studiato i linguaggi e programmi più usati per la creazione di siti web e video.
+                </p>
+
+                <div class="flex gap-4">
+                    <a href="progetti.html"
+                        class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">
+                        I miei progetti
+                    </a>
+                    <a href="contattami.html" class="px-8 py-3 rounded-lg border border-primary/30">
+                        Contattami
+                    </a>
+                </div>
+
+                <div class="mt-10 flex flex-wrap gap-3">
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">HTML/CSS</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Java</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">TypeScript</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">PHP</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Vegas PRO</span>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <div class="h-64 w-64 sm:h-80 sm:w-80 rounded-2xl overflow-hidden border-2 border-gray-800">
+                    <img src="Immagine.jpeg" alt="Profilo" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHAT I DO -->
+    <section class="py-20 max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12">Cosa faccio</h2>
+
+        <div class="grid lg:grid-cols-2 gap-10">
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="code-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Web Development</h3>
+                    <p class="text-gray-400">Sviluppo siti moderni (o medievali) e responsive (non oggi).</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="videocam-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Video Editor</h3>
+                    <p class="text-gray-400">Editing e creazione di video montaggi.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="server-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Back-end</h3>
+                    <p class="text-gray-400">Backend in crescita: API (e miele), database e logica applicativa.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="phone-portrait-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Mobile</h3>
+                    <p class="text-gray-400">App fluide e performanti (un giorno).</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <section id="contatti" class="py-20 max-w-7xl mx-auto px-4 bg-darker text-gray-200">
+        <h2 class="text-3xl font-bold mb-12">Contattami</h2>
+
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
+
+            <!-- FORM -->
+            <div class="bg-dark border border-gray-800 rounded-2xl p-8 shadow-2xl">
+
+                <form class="space-y-6">
+
+                    <!-- Nome -->
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-400">Nome e Cognome</label>
+                        <input type="text" placeholder="Il tuo nome" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
+                   text-gray-200 placeholder-gray-500
+                   focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-400">Email</label>
+                        <input type="email" placeholder="La tua email" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
+                   text-gray-200 placeholder-gray-500
+                   focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <!-- Messaggio -->
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-400">Messaggio</label>
+                        <textarea rows="5" placeholder="Scrivi qualcosa..." class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
+                   text-gray-200 placeholder-gray-500
+                   focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                    </div>
+
+                    <!-- Bottone -->
+                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r 
+                 from-primary to-secondary text-white font-semibold
+                 hover:opacity-90 transition">
+                        Invia messaggio
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- INFO -->
+            <div class="pt-12">
+                <h3 class="text-2xl font-semibold mb-8">Info di contatto</h3>
+
+                <div class="space-y-10 text-gray-400">
+
+                    <div>
+                        <p class="text-sm uppercase text-tron mb-1">Telefono</p>
+                        <p>+39 3663190567</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm uppercase text-tron mb-1">Email</p>
+                        <p>darioscalabrino@icloud.com</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm uppercase text-tron mb-1">Location</p>
+                        <p>Italia</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <footer class="flex flex-col space-y-10 justify-center m-10">
+
+        <div class="flex justify-center space-x-5">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+            </a>
+            <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+            </a>
+            <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+            </a>
+
+        </div>
+        <p class="text-center text-gray-700 font-medium">&copy; 2022 Company Ltd. All rights reservered.</p>
+    </footer>
+
+</body>
+
+</html>
