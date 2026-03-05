@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Darius | Troppo presto</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="progetti.css">
-
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -29,16 +26,155 @@
       }
     }
   </script>
+
+  <style>
+    @font-face {
+      font-family: 'TRON';
+      src: url('TRON.TTF') format('truetype');
+    }
+
+    :root {
+      --tron: #FF2D2D;
+      --cursor: #956afa;
+    }
+
+    /*
+      STRUTTURA:
+        <span class="reveal-wrap">          ← clip-path qui (taglia da destra)
+          <span class="typewriter glitch">  ← testo + cursore + padding interno
+        </span>
+
+      Separare clip-path dal testo evita che il crop tagli
+      text-shadow e ascendenti/discendenti del font TRON.
+    */
+
+    /* Wrapper che fa la dissolvenza: padding generoso = niente crop */
+    .reveal-wrap {
+      display: inline-block;
+      padding: 0.35em 0.35em;   /* padding simmetrico su tutti i lati */
+      clip-path: inset(0 100% 0 0);
+      animation: reveal 2.6s steps(11, end) forwards;
+    }
+
+    /* Testo: nessun clip-path, solo stile */
+    .typewriter {
+      font-family: 'TRON', sans-serif;
+      color: var(--tron);
+
+      text-shadow:
+        0 0 5px var(--tron),
+        0 0 14px rgba(255, 45, 45, 0.7),
+        0 0 28px rgba(255, 45, 45, 0.45);
+
+      display: inline-block;
+      white-space: nowrap;
+      position: relative;
+      line-height: 1.2;          /* più aria = no crop con font irregolari */
+    }
+
+    /* Cursore */
+    .typewriter::after {
+      content: "";
+      position: absolute;
+      top: 0.08em;
+      right: -0.26em;
+      width: 3px;
+      height: 0.85em;
+      background: var(--cursor);
+      animation: blink .85s step-end infinite;
+    }
+
+    @keyframes reveal {
+      to { clip-path: inset(0 0 0 0); }
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* GLITCH overlay */
+    .glitch {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      font-family: 'TRON', sans-serif;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      mix-blend-mode: screen;
+      line-height: 1.2;
+    }
+
+    /* Canale ciano */
+    .glitch::before {
+      color: #17BEBB;
+      text-shadow: 0 0 10px rgba(23, 190, 187, 0.6);
+      animation: glitch1 3.6s infinite;
+      animation-delay: 2.7s;
+    }
+
+    /* Canale viola */
+    .glitch::after {
+      color: #A855F7;
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+      animation: glitch2 4.1s infinite;
+      animation-delay: 2.7s;
+    }
+
+    @keyframes glitch1 {
+      0%,  72% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+      73%       { opacity: .75; transform: translate(-2px, -1px); clip-path: inset(0 0 55% 0); }
+      74%       { opacity: .2;  transform: translate(1px, 0);     clip-path: inset(35% 0 15% 0); }
+      75%       { opacity: .65; transform: translate(-1px, 1px);  clip-path: inset(10% 0 70% 0); }
+      76%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+    }
+
+    @keyframes glitch2 {
+      0%,  68% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+      69%       { opacity: .7;  transform: translate(2px, 1px);   clip-path: inset(40% 0 10% 0); }
+      70%       { opacity: .25; transform: translate(-1px, 0);    clip-path: inset(0 0 60% 0); }
+      71%       { opacity: .6;  transform: translate(1px, -1px);  clip-path: inset(55% 0 0 0); }
+      72%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+    }
+
+    /* Scala fluida: si adatta a qualsiasi schermo senza mai uscire */
+    .coming-text {
+      font-size: clamp(1.2rem, 7vw, 6rem);
+    }
+
+    /* Accessibilità */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-wrap {
+        animation: none;
+        clip-path: none;
+      }
+      .typewriter::after { display: none; }
+      .glitch::before,
+      .glitch::after { display: none; }
+    }
+  </style>
 </head>
 
-<body class="font-inter bg-darker text-gray-200 flex items-center justify-center min-h-screen relative">
+<body class="font-inter bg-darker text-gray-200 flex items-center justify-center min-h-screen relative overflow-hidden" style="overflow-x:hidden">
 
- <h1 class="text-6xl md:text-8xl">
-  <span class="typewriter">Da definire</span>
-</h1>
+  <!-- Glow centrato dietro il testo -->
+  <div class="absolute -z-10 w-[28rem] h-[28rem] bg-blue-500/20 rounded-full blur-[120px]
+              top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
-  <!-- Glow background -->
-  <div class="absolute -z-10 top-28 right-16 w-72 h-72 bg-blue-500/25 rounded-full blur-[100px]"></div>
+  <!-- Testo principale -->
+  <h1 class="coming-text" style="display:flex; justify-content:center; align-items:center; width:100%; padding: 0 1rem;">
+    <span class="reveal-wrap">
+      <span class="typewriter glitch" data-text="COMING SOON">DA DEFINRE</span>
+    </span>
+  </h1>
 
 </body>
 
