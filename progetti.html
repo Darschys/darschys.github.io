@@ -18,9 +18,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { inter: ['Inter', 'sans-serif'] },
                     colors: {
                         dark: '#0f172a',
                         darker: '#020617',
@@ -43,86 +41,90 @@
         .tron-font {
             font-family: 'TRON', sans-serif;
             color: #FF2D2D;
-            text-shadow:
-                0 0 4px #FF2D2D,
-                0 0 10px rgba(255, 45, 45, 0.6);
-        }
-
-        .video-docker video {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            text-shadow: 0 0 4px #FF2D2D, 0 0 10px rgba(255, 45, 45, 0.6);
         }
 
         .video-docker::after {
             content: "";
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
+            inset: 0;
             background: rgba(0, 0, 0, 0.6);
             z-index: 1;
         }
     </style>
 </head>
 
-<body class="font-inter bg-darker text-gray-200">
+<body class="font-inter bg-darker text-gray-200 overflow-x-hidden">
 
     <!-- HEADER -->
-    <header class="lg:px-16 px-4 flex flex-wrap items-center py-4 shadow-lg">
-        <div class="flex-1 flex justify-between items-center">
-            <img src="Logo.png" alt="Logo" class="sm:w-[10rem] w-[7rem]">
+    <header class="bg-darker border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="Portfolio.html" class="flex items-center gap-3">
+                <img src="Logo.png" alt="Logo" class="w-[7rem] sm:w-[10rem]">
+            </a>
+
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:block">
+                <ul class="flex items-center text-gray-100 space-x-6">
+                    <li><a class="hover:text-rose-500" href="Portfolio.html">Home</a></li>
+                    <li><a class="hover:text-rose-500" href="#">Studi</a></li>
+                    <li><a class="hover:text-rose-500" href="#">Esperienze</a></li>
+                    <li><a class="text-rose-500" href="progetti.html">Progetti</a></li>
+                    <li><a class="hover:text-rose-500" href="#">Contatti</a></li>
+                </ul>
+            </nav>
+
+            <!-- HAMBURGER -->
+            <button id="menu-btn" class="md:hidden text-3xl text-gray-200" aria-label="Apri menu">
+                <ion-icon id="menu-icon" name="menu-outline"></ion-icon>
+            </button>
         </div>
 
-        <nav>
-            <ul class="md:flex items-center text-gray-100 space-x-6">
+        <!-- MOBILE NAV -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-6">
+            <ul class="flex flex-col items-center gap-6 text-gray-100">
                 <li><a class="hover:text-rose-500" href="Portfolio.html">Home</a></li>
                 <li><a class="hover:text-rose-500" href="#">Studi</a></li>
                 <li><a class="hover:text-rose-500" href="#">Esperienze</a></li>
                 <li><a class="text-rose-500" href="progetti.html">Progetti</a></li>
                 <li><a class="hover:text-rose-500" href="#">Contatti</a></li>
             </ul>
-        </nav>
+        </div>
     </header>
 
     <!-- HERO -->
-    
-    <section class="relative h-screen flex flex-col items-center justify-center text-center text-white">
-        <div class="video-docker absolute top-0 left-0 w-full h-full overflow-hidden">
-            <video class="min-w-full min-h-full absolute object-cover" src="Video_Hero.mp4" type="video/mp4" autoplay
-                muted loop></video>
+    <section class="relative min-h-screen flex flex-col items-center justify-center text-center text-white">
+        <div class="video-docker absolute inset-0 overflow-hidden">
+            <video class="w-full h-full absolute object-cover" src="Video_Hero.mp4" autoplay muted loop playsinline
+                preload="metadata"></video>
         </div>
 
-        <div class="video-content space-y-2 z-10">
-            <!-- FIX: chiusura corretta h1 -->
+        <div class="relative z-10 px-4">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                I miei <span class="tron-font text-4xl">video</span>
+                I miei <span class="tron-font">video</span>
             </h1>
-
-            <h3 class="font-light text-3xl"></h3>
         </div>
     </section>
-    <hr>
 
+    <hr class="border-gray-800">
+
+    <!-- HALO -->
     <section class="px-6 py-12 max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold mb-6 border-l-4 border-red-500 pl-3">Halo</h2>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
 
-
+            <!-- Card -->
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
                 <img src="Recon.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
-
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CIBpfYHobhC/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
                     </a>
                 </div>
-
                 <div class="p-2">
                     <h3 class="text-sm font-semibold truncate">Halo 3</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
@@ -132,15 +134,14 @@
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
                 <img src="Lens_Flare.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
-
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                    <a href="https://www.instagram.com/darschys/reel/DTz30LYCBwp/" target="_blank" rel="noopener noreferrer"
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    <a href="https://www.instagram.com/darschys/reel/DTz30LYCBwp/" target="_blank"
+                        rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
                     </a>
                 </div>
-
                 <div class="p-2">
                     <h3 class="text-sm font-semibold truncate">Halo Infinite</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
@@ -150,29 +151,24 @@
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
                 <img src="Halo_5.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
-
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CLCFi6hqn1k/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
                     </a>
                 </div>
-
                 <div class="p-2">
                     <h3 class="text-sm font-semibold truncate">Halo 5</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
             </div>
 
-
-
-
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
-                <img src="Halo_Lens.png" alt="Fullmetal Alchemist: Brotherhood"
+                <img src="Halo_Lens.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CW07skpgNbm/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
@@ -182,14 +178,13 @@
                     <h3 class="text-sm font-semibold truncate">Halo Infinite</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
-                
             </div>
 
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
-                <img src="Halo_4.png" alt="Naruto"
+                <img src="Halo_4.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CQFHHbMoW8H/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
@@ -199,14 +194,13 @@
                     <h3 class="text-sm font-semibold truncate">Halo 4</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
-                
             </div>
 
-           <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
-                <img src="Halo_3.png" alt="Naruto"
+            <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
+                <img src="Halo_3.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CL8xgwHIihI/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
@@ -216,28 +210,27 @@
                     <h3 class="text-sm font-semibold truncate">Halo 3</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
+            </div>
 
         </div>
     </section>
 
-     <section class="px-6 py-12 max-w-7xl mx-auto">
+    <!-- DESTINY -->
+    <section class="px-6 py-12 max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold mb-6 border-l-4 border-red-500 pl-3">Destiny</h2>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
 
-
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
                 <img src="Destiny_volo.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
-
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/Cf8m0E_gERE/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
                     </a>
                 </div>
-
                 <div class="p-2">
                     <h3 class="text-sm font-semibold truncate">Destiny 2</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
@@ -247,15 +240,13 @@
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
                 <img src="D_no.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
-
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/COk6BAJo5mG/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
                     </a>
                 </div>
-
                 <div class="p-2">
                     <h3 class="text-sm font-semibold truncate">Destiny 2</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
@@ -265,29 +256,24 @@
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
                 <img src="D_life.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
-
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CBGqqMUAgYy/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
                     </a>
                 </div>
-
                 <div class="p-2">
                     <h3 class="text-sm font-semibold truncate">Destiny 2</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
             </div>
 
-
-
-
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
-                <img src="D_1.png" alt="Fullmetal Alchemist: Brotherhood"
+                <img src="D_1.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CIaoI-MIt9E/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
@@ -297,14 +283,13 @@
                     <h3 class="text-sm font-semibold truncate">Destiny 1</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
-                
             </div>
 
             <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
-                <img src="D_7.png" alt="Naruto"
+                <img src="D_7.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/CARUFiBIqTy/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
@@ -314,14 +299,13 @@
                     <h3 class="text-sm font-semibold truncate">Destiny 2</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
-                
             </div>
 
-           <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
-                <img src="D_2.png" alt="Naruto"
+            <div class="relative group bg-[#1c1c1c] rounded overflow-hidden shadow hover:shadow-lg transition">
+                <img src="D_2.png"
                     class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                    class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                     <a href="https://www.instagram.com/p/COzh7EPIk0O/" target="_blank" rel="noopener noreferrer"
                         class="bg-red-600 px-4 py-2 rounded text-sm hover:bg-red-700 inline-block">
                         Watch Now
@@ -331,27 +315,51 @@
                     <h3 class="text-sm font-semibold truncate">Destiny 2</h3>
                     <p class="text-xs text-gray-400">FPS • Action</p>
                 </div>
+            </div>
 
         </div>
     </section>
 
-    <hr>
+    <hr class="border-gray-800">
 
-    <footer class="flex flex-col space-y-10 justify-center m-10">
-        <div class="flex justify-center space-x-5">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
-            </a>
-            <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
-            </a>
-            <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
-            </a>
+    <!-- FOOTER -->
+    <footer class="py-10">
+        <div class="flex flex-col items-center justify-center text-center gap-6">
+            <div class="flex justify-center space-x-5">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" alt="Facebook" />
+                </a>
+                <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank"
+                    rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" alt="LinkedIn" />
+                </a>
+                <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" alt="Instagram" />
+                </a>
+            </div>
+
+            <p class="text-center text-gray-500 text-sm">&copy; 2026 Darschys. All rights reserved.</p>
         </div>
-
-        <p class="text-center text-gray-700 font-medium">&copy; 2022 Company Ltd. All rights reservered.</p>
     </footer>
+
+    <!-- MENU SCRIPT -->
+    <script>
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const icon = document.getElementById("menu-icon");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            icon.setAttribute("name", menu.classList.contains("hidden") ? "menu-outline" : "close-outline");
+        });
+
+        menu.querySelectorAll("a").forEach(a => {
+            a.addEventListener("click", () => {
+                menu.classList.add("hidden");
+                icon.setAttribute("name", "menu-outline");
+            });
+        });
+    </script>
 
 </body>
 
