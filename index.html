@@ -2,320 +2,323 @@
 <html lang="it">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dario Scalabrino | Developer struppiato</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dario Scalabrino | Developer struppiato</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-  <!-- Ionicons -->
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            inter: ['Inter', 'sans-serif'],
-          },
-          colors: {
-            dark: '#0f172a',
-            darker: '#020617',
-            primary: '#6366f1',
-            secondary: '#8b5cf6',
-            accent: '#ec4899',
-            tron: '#FF2D2D',
-          }
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        darker: '#020617',
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        tron: '#FF2D2D',
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    @font-face {
-      font-family: 'TRON';
-      src: url('TRON.TTF') format('truetype');
-    }
+    <style>
+        @font-face {
+            font-family: 'TRON';
+            src: url('TRON.TTF') format('truetype');
+        }
 
-    .tron-font {
-      font-family: 'TRON', sans-serif;
-      color: #FF2D2D;
-      text-shadow:
-        0 0 4px #FF2D2D,
-        0 0 10px rgba(255, 45, 45, 0.6);
-    }
+        .tron-font {
+            font-family: 'TRON', sans-serif;
+            color: #FF2D2D;
+            text-shadow:
+                0 0 4px #FF2D2D,
+                0 0 10px rgba(255, 45, 45, 0.6);
+        }
 
-    /* Smooth scroll nativo come fallback */
-    html {
-      scroll-behavior: smooth;
-    }
+        /* FIX: scroll fluido garantito (anche se Tailwind fa il difficile) */
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* Offset per l'header fisso: quando si arriva alla sezione,
-       lascia respiro sopra (altezza header ~72px + 24px extra) */
-    #contatti {
-      scroll-margin-top: 96px;
-    }
-  </style>
+        .glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  font-family: 'TRON', sans-serif;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: screen;
+  line-height: 1.2;
+}
+
+.glitch::before {
+  color: #17BEBB;
+  text-shadow: 0 0 10px rgba(23, 190, 187, 0.6);
+  animation: glitch1 1.5s infinite;
+}
+
+.glitch::after {
+  color: #A855F7;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+  animation: glitch2 1.8s infinite;
+}
+
+@keyframes glitch1 {
+  0%,  72% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+  73%       { opacity: .75; transform: translate(-2px, -1px); clip-path: inset(0 0 55% 0); }
+  74%       { opacity: .2;  transform: translate(1px, 0);     clip-path: inset(35% 0 15% 0); }
+  75%       { opacity: .65; transform: translate(-1px, 1px);  clip-path: inset(10% 0 70% 0); }
+  76%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+}
+
+@keyframes glitch2 {
+  0%,  68% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+  69%       { opacity: .7;  transform: translate(2px, 1px);   clip-path: inset(40% 0 10% 0); }
+  70%       { opacity: .25; transform: translate(-1px, 0);    clip-path: inset(0 0 60% 0); }
+  71%       { opacity: .6;  transform: translate(1px, -1px);  clip-path: inset(55% 0 0 0); }
+  72%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+}
+    </style>
 </head>
 
-<body class="font-inter bg-darker text-gray-200 overflow-x-hidden">
+<body class="font-inter bg-darker text-gray-200 scroll-smooth">
 
-  <!-- HEADER -->
-  <header class="bg-darker border-b border-gray-800">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+    <!-- HEADER -->
+    <!-- HEADER -->
+    <header class="bg-darker border-b border-gray-800">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="Portfolio.html" class="flex items-center gap-3">
+                <img src="Logo.png" alt="Logo" class="w-[7rem] sm:w-[10rem]">
+            </a>
 
-      <!-- LOGO -->
-      <a href="#" class="flex items-center">
-        <img src="Logo.png" alt="Logo" class="w-32">
-      </a>
+            <!-- DESKTOP NAV -->
+            <nav class="hidden md:block">
+                <ul class="flex items-center text-gray-100 space-x-6">
+                    <li><a class="text-rose-500" href="Portfolio.html">Home</a></li>
+                    <li><a class="hover:text-rose-500" href="studi.html">Studi</a></li>
+                    <li><a class="hover:text-rose-500" href="esperienze.html">Esperienze</a></li>
+                    <li><a class="hover:text-rose-500" href="progetti.html">Progetti</a></li>
+                    <li><a class="hover:text-rose-500" href="#contatti">Contatti</a></li>
+                </ul>
+            </nav>
 
-      <!-- DESKTOP MENU -->
-      <nav class="hidden md:flex">
-        <ul class="flex items-center text-gray-100 space-x-6">
-          <li><a class="text-rose-500" href="#">Home</a></li>
-          <li><a class="hover:text-rose-500" href="studi.html">Studi</a></li>
-          <li><a class="hover:text-rose-500" href="esperienze.html">Esperienze</a></li>
-          <li><a class="hover:text-rose-500" href="progetti.html">Progetti</a></li>
-          <li><a class="hover:text-rose-500 transition-colors duration-200" href="#contatti">Contatti</a></li>
-        </ul>
-      </nav>
-
-      <!-- HAMBURGER -->
-      <button id="menu-btn" class="md:hidden text-3xl text-gray-200" aria-label="Apri menu">
-        <ion-icon id="menu-icon" name="menu-outline"></ion-icon>
-      </button>
-
-    </div>
-
-    <!-- MOBILE MENU -->
-    <div id="mobile-menu" class="hidden md:hidden px-4 pb-6">
-      <nav class="flex flex-col items-center gap-6 text-gray-200">
-        <a href="#" class="hover:text-rose-500 transition">Home</a>
-        <a href="studi.html" class="hover:text-rose-500 transition">Studi</a>
-        <a href="esperienze.html" class="hover:text-rose-500 transition">Esperienze</a>
-        <a href="progetti.html" class="hover:text-rose-500 transition">Progetti</a>
-        <a href="#contatti" class="hover:text-rose-500 transition">Contatti</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="py-20 relative">
-    <div class="absolute -z-10 top-24 left-1/2 -translate-x-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-red-500/30 rounded-full blur-[120px]"></div>
-
-    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      <div>
-        <span class="inline-block px-3 py-1 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
-          Developer struppiato
-        </span>
-
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-          Hi, I'm <span class="tron-font">Dario</span>
-        </h1>
-
-        <p class="text-xl text-gray-400 mb-8 max-w-lg">
-          Ho studiato i linguaggi più usati per la creazione di siti web.
-        </p>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="progetti.html"
-            class="w-full sm:w-auto px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold text-center">
-            I miei progetti
-          </a>
-          <a href="contattami.html"
-            class="w-full sm:w-auto px-8 py-3 rounded-lg border border-primary/30 text-center">
-            Contattami
-          </a>
-        </div>
-
-        <div class="mt-10 flex flex-wrap gap-3">
-          <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">HTML</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">CSS</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Java</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Tailwind</span>
-          <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">TypeScript</span>
-        </div>
-      </div>
-
-      <div class="flex justify-center">
-        <div class="h-64 w-64 sm:h-80 sm:w-80 rounded-2xl overflow-hidden border-2 border-gray-800">
-          <img src="Immagine.jpeg" alt="Profilo" class="w-full h-full object-cover">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT I DO -->
-  <section class="py-20 max-w-7xl mx-auto px-4">
-    <h2 class="text-3xl font-bold mb-12">Cosa faccio</h2>
-
-    <div class="grid lg:grid-cols-2 gap-10">
-      <div class="flex flex-col sm:flex-row gap-4">
-        <ion-icon class="text-4xl text-tron" name="code-outline"></ion-icon>
-        <div>
-          <h3 class="text-xl font-semibold">Web Development</h3>
-          <p class="text-gray-400">Sviluppo siti moderni (o medievali) e responsive (non oggi).</p>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4">
-        <ion-icon class="text-4xl text-tron" name="videocam-outline"></ion-icon>
-        <div>
-          <h3 class="text-xl font-semibold">Video Editor</h3>
-          <p class="text-gray-400">Editing e creazione di video montaggi.</p>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4">
-        <ion-icon class="text-4xl text-tron" name="server-outline"></ion-icon>
-        <div>
-          <h3 class="text-xl font-semibold">Back-end</h3>
-          <p class="text-gray-400">Backend in crescita: API (e miele), database e logica applicativa.</p>
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row gap-4">
-        <ion-icon class="text-4xl text-tron" name="phone-portrait-outline"></ion-icon>
-        <div>
-          <h3 class="text-xl font-semibold">Mobile</h3>
-          <p class="text-gray-400">App fluide e performanti (un giorno).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT — id="contatti" qui, sulla sezione intera -->
-  <section id="contatti" class="py-20 bg-darker text-gray-200">
-    <div class="max-w-7xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-12">Contattami</h2>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-
-        <!-- FORM -->
-        <div class="bg-dark border border-gray-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
-          <form class="space-y-6">
-            <div>
-              <label class="block mb-2 text-sm text-gray-400">Nome e Cognome</label>
-              <input type="text" placeholder="Il tuo nome"
-                class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700
-                       text-gray-200 placeholder-gray-500
-                       focus:outline-none focus:ring-2 focus:ring-primary" />
-            </div>
-
-            <div>
-              <label class="block mb-2 text-sm text-gray-400">Email</label>
-              <input type="email" placeholder="La tua email"
-                class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700
-                       text-gray-200 placeholder-gray-500
-                       focus:outline-none focus:ring-2 focus:ring-primary" />
-            </div>
-
-            <div>
-              <label class="block mb-2 text-sm text-gray-400">Messaggio</label>
-              <textarea rows="5" placeholder="Scrivi qualcosa..."
-                class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700
-                       text-gray-200 placeholder-gray-500
-                       focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
-            </div>
-
-            <button type="submit"
-              class="w-full py-3 rounded-lg bg-gradient-to-r
-                     from-primary to-secondary text-white font-semibold
-                     hover:opacity-90 transition">
-              Invia messaggio
+            <!-- HAMBURGER -->
+            <button id="menu-btn" class="md:hidden text-3xl text-gray-200" aria-label="Apri menu">
+                <ion-icon id="menu-icon" name="menu-outline"></ion-icon>
             </button>
-          </form>
         </div>
 
-        <!-- INFO -->
-        <div class="bg-dark border border-gray-800 rounded-2xl p-6 sm:p-8">
-          <h3 class="text-2xl font-semibold mb-6">Info di contatto</h3>
-
-          <div class="space-y-6 text-gray-400">
-            <div>
-              <p class="text-sm uppercase text-tron mb-1">Telefono</p>
-              <p class="break-words">+39 3663190567</p>
-            </div>
-            <div>
-              <p class="text-sm uppercase text-tron mb-1">Email</p>
-              <p class="break-words">darioscalabrino@icloud.com</p>
-            </div>
-            <div>
-              <p class="text-sm uppercase text-tron mb-1">Location</p>
-              <p>Italia</p>
-            </div>
-          </div>
+        <!-- MOBILE NAV -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-6">
+            <ul class="flex flex-col items-center gap-6 text-gray-100">
+                <li><a class="hover:text-rose-500" href="Portfolio.html">Home</a></li>
+                <li><a class="hover:text-rose-500" href="studi.html">Studi</a></li>
+                <li><a class="hover:text-rose-500" href="esperienze.html">Esperienze</a></li>
+                <li><a class="text-rose-500" href="progetti.html">Progetti</a></li>
+                <li><a class="hover:text-rose-500" href="#">Contatti</a></li>
+            </ul>
         </div>
+    </header>
 
-      </div>
-    </div>
-  </section>
+    <!-- HERO -->
+    <section class="py-20">
+        <div class="absolute -z-10 top-32 left-20 w-96 h-96 bg-red-500/30 rounded-full blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-  <hr class="border-gray-800">
+            <div>
+                <span
+                    class="inline-block px-3 py-1 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
+                    Developer struppiato
+                </span>
 
-  <!-- FOOTER -->
-  <footer class="py-10">
-    <div class="flex flex-col items-center justify-center text-center gap-6">
-      <div class="flex justify-center space-x-5">
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" alt="Facebook" />
-        </a>
-        <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer">
-          <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" alt="LinkedIn" />
-        </a>
-        <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
-          <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" alt="Instagram" />
-        </a>
-      </div>
-      <p class="text-center text-gray-500 text-sm">&copy; 2026 Darschys. All rights reserved.</p>
-    </div>
-  </footer>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
+                    Ehi, sono <span class="tron-font glitch" data-text="Dario">Dario</span>
+                </h1>
 
-  <script>
-    // ── Smooth scroll su tutti i link ancora interni ──────────────────────
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        const targetId = link.getAttribute('href').slice(1);
-        if (!targetId) return; // href="#" → torna in cima normalmente
+                <p class="text-xl text-gray-400 mb-8 max-w-lg">
+                    ed ho studiato i linguaggi e programmi più usati per la creazione di siti web e video.
+                </p>
 
-        const target = document.getElementById(targetId);
-        if (!target) return;
+                <div class="flex gap-4">
+                    <a href="progetti.html"
+                        class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">
+                        I miei progetti
+                    </a>
+                    <a href="contattami.html" class="px-8 py-3 rounded-lg border border-primary/30">
+                        Contattami
+                    </a>
+                </div>
 
-        e.preventDefault();
+                <div class="mt-10 flex flex-wrap gap-3">
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">HTML/CSS</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Java</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">TypeScript</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">PHP</span>
+                    <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Vegas PRO</span>
+                </div>
+            </div>
 
-        // Chiude il menu mobile se aperto
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon   = document.getElementById('menu-icon');
-        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          menuIcon?.setAttribute('name', 'menu-outline');
-        }
+            <div class="flex justify-center">
+                <div class="h-64 w-64 sm:h-80 sm:w-80 rounded-2xl overflow-hidden border-2 border-gray-800">
+                    <img src="Immagine.jpeg" alt="Profilo" class="w-full h-full object-cover">
+                </div>
+            </div>
 
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
+        </div>
+    </section>
 
-    // ── Toggle menu mobile ─────────────────────────────────────────────────
-    document.addEventListener('DOMContentLoaded', () => {
-      const btn  = document.getElementById('menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      const icon = document.getElementById('menu-icon');
+    <!-- WHAT I DO -->
+    <section class="py-20 max-w-7xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12">Cosa faccio</h2>
 
-      if (!btn || !menu || !icon) return;
+        <div class="grid lg:grid-cols-2 gap-10">
 
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-        const isOpen = !menu.classList.contains('hidden');
-        icon.setAttribute('name', isOpen ? 'close-outline' : 'menu-outline');
-      });
-    });
-  </script>
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="code-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Web Development</h3>
+                    <p class="text-gray-400">Sviluppo siti moderni (o medievali) e responsive (ma in modo educato).</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="videocam-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Video Editor</h3>
+                    <p class="text-gray-400">Editing e creazione di video montaggi.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="server-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Back-end</h3>
+                    <p class="text-gray-400">Backend in crescita: API (e miele), database e logica applicativa.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <ion-icon class="text-4xl text-tron" name="phone-portrait-outline"></ion-icon>
+                <div>
+                    <h3 class="text-xl font-semibold">Mobile</h3>
+                    <p class="text-gray-400">App fluide e performanti (un giorno).</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contatti" class="py-20 max-w-7xl mx-auto px-4 bg-darker text-gray-200">
+        <h2 class="text-3xl font-bold mb-12">Contattami</h2>
+
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
+
+            <!-- FORM -->
+            <div class="bg-dark border border-gray-800 rounded-2xl p-8 shadow-2xl">
+
+                <form class="space-y-6">
+
+                    <!-- Nome -->
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-400">Nome e Cognome</label>
+                        <input type="text" placeholder="Il tuo nome" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
+                   text-gray-200 placeholder-gray-500
+                   focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-400">Email</label>
+                        <input type="email" placeholder="La tua email" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
+                   text-gray-200 placeholder-gray-500
+                   focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+
+                    <!-- Messaggio -->
+                    <div>
+                        <label class="block mb-2 text-sm text-gray-400">Messaggio</label>
+                        <textarea rows="5" placeholder="Scrivi qualcosa..." class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
+                   text-gray-200 placeholder-gray-500
+                   focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                    </div>
+
+                    <!-- Bottone -->
+                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r 
+                 from-primary to-secondary text-white font-semibold
+                 hover:opacity-90 transition">
+                        Invia messaggio
+                    </button>
+
+                </form>
+            </div>
+
+            <!-- INFO -->
+            <div class="pt-12">
+                <h3 class="text-2xl font-semibold mb-8">Info di contatto</h3>
+
+                <div class="space-y-10 text-gray-400">
+
+                    <div>
+                        <p class="text-sm uppercase text-tron mb-1">Telefono</p>
+                        <p>+39 3663190567</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm uppercase text-tron mb-1">Email</p>
+                        <p>darioscalabrino@icloud.com</p>
+                    </div>
+
+                    <div>
+                        <p class="text-sm uppercase text-tron mb-1">Location</p>
+                        <p>Italia</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <hr>
+    <footer class="flex flex-col space-y-10 justify-center m-10">
+
+        <div class="flex justify-center space-x-5">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+            </a>
+            <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+            </a>
+            <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+            </a>
+
+        </div>
+        <p class="text-center text-gray-700 font-medium">&copy; 2026 Darschys. All rights reserved.</p>
+    </footer>
 
 </body>
+
 </html>
