@@ -35,6 +35,7 @@
             }
         }
     </script>
+    
 
     <style>
         @font-face {
@@ -105,7 +106,7 @@
     </style>
 </head>
 
-<body class="font-inter bg-darker text-gray-200 scroll-smooth overflow-x-hidden"">
+<body class="font-inter bg-darker text-gray-200 scroll-smooth overflow-x-hidden">
 
     <!-- HEADER -->
     <header class="bg-darker border-b border-gray-800 w-full">
@@ -326,6 +327,23 @@
         <p class="text-center text-gray-700 font-medium">&copy; 2026 Darschys. All rights reserved.</p>
     </footer>
 
+    <script>
+        const btn = document.getElementById("menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const icon = document.getElementById("menu-icon");
+
+        btn.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            icon.setAttribute("name", menu.classList.contains("hidden") ? "menu-outline" : "close-outline");
+        });
+
+        menu.querySelectorAll("a").forEach(a => {
+            a.addEventListener("click", () => {
+                menu.classList.add("hidden");
+                icon.setAttribute("name", "menu-outline");
+            });
+        });
+    </script>
 </body>
 
 </html>
