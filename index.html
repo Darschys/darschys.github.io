@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="it">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dario Scalabrino | Developer struppiato</title>
-
+ 
     <script src="https://cdn.tailwindcss.com"></script>
-
+ 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="index.css">
+ 
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+ 
     <script>
         tailwind.config = {
             theme: {
@@ -35,14 +36,13 @@
             }
         }
     </script>
-    
-
+ 
     <style>
         @font-face {
             font-family: 'TRON';
             src: url('TRON.TTF') format('truetype');
         }
-
+ 
         .tron-font {
             font-family: 'TRON', sans-serif;
             color: #FF2D2D;
@@ -50,64 +50,132 @@
                 0 0 4px #FF2D2D,
                 0 0 10px rgba(255, 45, 45, 0.6);
         }
-
-        /* FIX: scroll fluido garantito (anche se Tailwind fa il difficile) */
+ 
         html {
             scroll-behavior: smooth;
         }
-
+ 
         .glitch {
-  position: relative;
-  display: inline-block;
-}
+            position: relative;
+            display: inline-block;
+        }
+ 
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            font-family: 'TRON', sans-serif;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            mix-blend-mode: screen;
+            line-height: 1.2;
+        }
+ 
+        .glitch::before {
+            color: #17BEBB;
+            text-shadow: 0 0 10px rgba(23, 190, 187, 0.6);
+            animation: glitch1 1.5s infinite;
+        }
+ 
+        .glitch::after {
+            color: #A855F7;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+            animation: glitch2 1.8s infinite;
+        }
+ 
+        @keyframes glitch1 {
+            0%,  72% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+            73%       { opacity: .75; transform: translate(-2px, -1px); clip-path: inset(0 0 55% 0); }
+            74%       { opacity: .2;  transform: translate(1px, 0);     clip-path: inset(35% 0 15% 0); }
+            75%       { opacity: .65; transform: translate(-1px, 1px);  clip-path: inset(10% 0 70% 0); }
+            76%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+        }
+ 
+        @keyframes glitch2 {
+            0%,  68% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+            69%       { opacity: .7;  transform: translate(2px, 1px);   clip-path: inset(40% 0 10% 0); }
+            70%       { opacity: .25; transform: translate(-1px, 0);    clip-path: inset(0 0 60% 0); }
+            71%       { opacity: .6;  transform: translate(1px, -1px);  clip-path: inset(55% 0 0 0); }
+            72%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+        }
 
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  font-family: 'TRON', sans-serif;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  mix-blend-mode: screen;
-  line-height: 1.2;
-}
+        /* ── Hamburger3 ── */
+        .hamburger3 {
+            position: relative;
+            width: 30px;
+        }
+        #hamburger3-input {
+            display: none;
+        }
+        .hamburger3 label {
+            display: block;
+            cursor: pointer;
+        }
+        .hamburger3-lines {
+            position: relative;
+        }
+        .hamburger3-lines span {
+            display: block;
+            height: 3px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background-color: #e5e7eb;
+            transition: all 0.3s ease-in-out;
+        }
+        #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(2) {
+            transform: scale(0);
+        }
+        #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
 
-.glitch::before {
-  color: #17BEBB;
-  text-shadow: 0 0 10px rgba(23, 190, 187, 0.6);
-  animation: glitch1 1.5s infinite;
-}
-
-.glitch::after {
-  color: #A855F7;
-  text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-  animation: glitch2 1.8s infinite;
-}
-
-@keyframes glitch1 {
-  0%,  72% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
-  73%       { opacity: .75; transform: translate(-2px, -1px); clip-path: inset(0 0 55% 0); }
-  74%       { opacity: .2;  transform: translate(1px, 0);     clip-path: inset(35% 0 15% 0); }
-  75%       { opacity: .65; transform: translate(-1px, 1px);  clip-path: inset(10% 0 70% 0); }
-  76%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
-}
-
-@keyframes glitch2 {
-  0%,  68% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
-  69%       { opacity: .7;  transform: translate(2px, 1px);   clip-path: inset(40% 0 10% 0); }
-  70%       { opacity: .25; transform: translate(-1px, 0);    clip-path: inset(0 0 60% 0); }
-  71%       { opacity: .6;  transform: translate(1px, -1px);  clip-path: inset(55% 0 0 0); }
-  72%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
-}
+        /* ── Typewriter titles ── */
+        .text3 span {
+            color: transparent;
+            font-size: 1.875rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding-right: 8px;
+        }
+        .text3 span::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            border-right: 3px solid #FF2D2D;
+            overflow: hidden;
+            color: #e5e7eb;
+            animation: text3-animation 4s linear infinite;
+            white-space: nowrap;
+            
+        }
+        .text3-cosa span::before {
+            content: "Cosa faccio";
+        }
+        .text3-contattami span::before {
+            content: "Contattami";
+        }
+        @keyframes text3-animation {
+            0%, 10%, 100% { width: 0; }
+            10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% { border-right-color: transparent; }
+            11%, 21%, 31%, 41%, 51%, 61%, 71%, 81%, 91% { border-right-color: #FF2D2D; }
+            60%, 80% { width: 100%; }
+        }
     </style>
 </head>
-
+ 
 <body class="font-inter bg-darker text-gray-200 scroll-smooth overflow-x-hidden">
-
+ 
     <!-- HEADER -->
     <header class="bg-darker border-b border-gray-800 w-full">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -115,7 +183,7 @@
             <a href="index.html" class="flex items-center gap-3">
                 <img src="Logo.png" alt="Logo" class="w-[7rem] sm:w-[10rem]">
             </a>
-
+ 
             <!-- DESKTOP NAV -->
             <nav class="hidden md:block">
                 <ul class="flex items-center text-gray-100 space-x-6">
@@ -126,15 +194,22 @@
                     <li><a class="hover:text-rose-500" href="#contatti">Contatti</a></li>
                 </ul>
             </nav>
-
+ 
             <!-- HAMBURGER -->
-            <button id="menu-btn" class="md:hidden text-3xl text-gray-200" aria-label="Apri menu">
-                <ion-icon id="menu-icon" name="menu-outline"></ion-icon>
-            </button>
+            <div class="hamburger3 md:hidden">
+                <input type="checkbox" id="hamburger3-input" />
+                <label for="hamburger3-input">
+                    <div class="hamburger3-lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </label>
+            </div>
         </div>
-
+ 
         <!-- MOBILE NAV -->
-         <div id="mobile-menu" class="hidden px-4 pb-6 w-full">
+        <div id="mobile-menu" class="hidden px-4 pb-6 w-full">
             <ul class="flex flex-col items-center gap-6 text-gray-100">
                 <li><a class="text-rose-500" href="index.html">Home</a></li>
                 <li><a class="hover:text-rose-500" href="studi.html">Studi</a></li>
@@ -151,8 +226,7 @@
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             <div>
-                <span
-                    class="inline-block px-7 py-5 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
+                <span class="inline-block px-7 py-5 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
                     Developer struppiato
                 </span>
 
@@ -165,8 +239,7 @@
                 </p>
 
                 <div class="flex gap-4">
-                    <a href="progetti.html"
-                        class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">
+                    <a href="progetti.html" class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">
                         I miei progetti
                     </a>
                     <a href="contattami.html" class="px-8 py-3 rounded-lg border border-primary/30">
@@ -194,7 +267,9 @@
 
     <!-- WHAT I DO -->
     <section class="py-20 max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-12">Cosa faccio</h2>
+        <h2 class="font-bold mb-12">
+            <div class="text3 text3-cosa"><span>Cosa faccio</span></div>
+        </h2>
 
         <div class="grid lg:grid-cols-2 gap-10">
 
@@ -233,85 +308,66 @@
         </div>
     </section>
 
+    <!-- CONTATTI -->
     <section id="contatti" class="py-20 max-w-7xl mx-auto px-4 bg-darker text-gray-200">
-        <h2 class="text-3xl font-bold mb-12">Contattami</h2>
+        <h2 class="font-bold mb-12">
+            <div class="text3 text3-contattami"><span>Contattami</span></div>
+        </h2>
 
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
 
             <!-- FORM -->
             <div class="bg-dark border border-gray-800 rounded-2xl p-8 shadow-2xl">
-
                 <form class="space-y-6">
-
-                    <!-- Nome -->
                     <div>
                         <label class="block mb-2 text-sm text-gray-400">Nome e Cognome</label>
-                        <input type="text" placeholder="Il tuo nome" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
-                   text-gray-200 placeholder-gray-500
-                   focus:outline-none focus:ring-2 focus:ring-primary" />
+                        <input type="text" placeholder="Il tuo nome" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary" />
                     </div>
-
-                    <!-- Email -->
                     <div>
                         <label class="block mb-2 text-sm text-gray-400">Email</label>
-                        <input type="email" placeholder="La tua email" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
-                   text-gray-200 placeholder-gray-500
-                   focus:outline-none focus:ring-2 focus:ring-primary" />
+                        <input type="email" placeholder="La tua email" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary" />
                     </div>
-
-                    <!-- Messaggio -->
                     <div>
                         <label class="block mb-2 text-sm text-gray-400">Messaggio</label>
-                        <textarea rows="5" placeholder="Scrivi qualcosa..." class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 
-                   text-gray-200 placeholder-gray-500
-                   focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                        <textarea rows="5" placeholder="Scrivi qualcosa..." class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
                     </div>
-
-                    <!-- Bottone -->
-                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r 
-                 from-primary to-secondary text-white font-semibold
-                 hover:opacity-90 transition">
+                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition">
                         Invia messaggio
                     </button>
-
                 </form>
             </div>
 
             <!-- INFO -->
             <div class="pt-12">
                 <h3 class="text-2xl font-semibold mb-8">Info di contatto</h3>
-
                 <div class="space-y-10 text-gray-400">
-
                     <div>
                         <p class="text-sm uppercase text-tron mb-1">Telefono</p>
                         <p>+39 3663190567</p>
                     </div>
-
                     <div>
                         <p class="text-sm uppercase text-tron mb-1">Email</p>
                         <p>darioscalabrino@icloud.com</p>
                     </div>
-
                     <div>
                         <p class="text-sm uppercase text-tron mb-1">Location</p>
                         <p>Italia</p>
                     </div>
                     <div>
-                    <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
-                        class="px-8 py-3 rounded-lg bg-gradient-to-r from-troll to-lol text-white font-semibold">
-                        Cliccami...
-                    </a>
+                        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
+                            class="px-8 py-3 rounded-lg bg-gradient-to-r from-troll to-lol text-white font-semibold">
+                            Cliccami...
+                        </a>
                     </div>
-
                 </div>
             </div>
 
         </div>
     </section>
-    <hr>
-    <footer class="flex flex-col space-y-10 justify-center m-10">
 
+    <hr>
+
+    <footer class="flex flex-col space-y-10 justify-center m-10">
         <div class="flex justify-center space-x-5">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
@@ -322,25 +378,22 @@
             <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
                 <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
             </a>
-
         </div>
         <p class="text-center text-gray-700 font-medium">&copy; 2026 Darschys. All rights reserved.</p>
     </footer>
 
     <script>
-        const btn = document.getElementById("menu-btn");
+        const checkbox = document.getElementById("hamburger3-input");
         const menu = document.getElementById("mobile-menu");
-        const icon = document.getElementById("menu-icon");
-
-        btn.addEventListener("click", () => {
-            menu.classList.toggle("hidden");
-            icon.setAttribute("name", menu.classList.contains("hidden") ? "menu-outline" : "close-outline");
+ 
+        checkbox.addEventListener("change", () => {
+            menu.classList.toggle("hidden", !checkbox.checked);
         });
-
+ 
         menu.querySelectorAll("a").forEach(a => {
             a.addEventListener("click", () => {
                 menu.classList.add("hidden");
-                icon.setAttribute("name", "menu-outline");
+                checkbox.checked = false;
             });
         });
     </script>
