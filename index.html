@@ -14,6 +14,9 @@
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
  
     <script>
         tailwind.config = {
@@ -51,22 +54,14 @@
                 0 0 10px rgba(255, 45, 45, 0.6);
         }
  
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
  
-        .glitch {
-            position: relative;
-            display: inline-block;
-        }
- 
-        .glitch::before,
-        .glitch::after {
+        .glitch { position: relative; display: inline-block; }
+        .glitch::before, .glitch::after {
             content: attr(data-text);
             font-family: 'TRON', sans-serif;
             position: absolute;
-            left: 0;
-            top: 0;
+            left: 0; top: 0;
             width: 100%;
             white-space: nowrap;
             pointer-events: none;
@@ -74,19 +69,16 @@
             mix-blend-mode: screen;
             line-height: 1.2;
         }
- 
         .glitch::before {
             color: #17BEBB;
             text-shadow: 0 0 10px rgba(23, 190, 187, 0.6);
             animation: glitch1 1.5s infinite;
         }
- 
         .glitch::after {
             color: #A855F7;
             text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
             animation: glitch2 1.8s infinite;
         }
- 
         @keyframes glitch1 {
             0%,  72% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
             73%       { opacity: .75; transform: translate(-2px, -1px); clip-path: inset(0 0 55% 0); }
@@ -94,7 +86,6 @@
             75%       { opacity: .65; transform: translate(-1px, 1px);  clip-path: inset(10% 0 70% 0); }
             76%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
         }
- 
         @keyframes glitch2 {
             0%,  68% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
             69%       { opacity: .7;  transform: translate(2px, 1px);   clip-path: inset(40% 0 10% 0); }
@@ -103,73 +94,92 @@
             72%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
         }
 
-        /* ── Hamburger3 ── */
-        .hamburger3 {
-            position: relative;
-            width: 30px;
-        }
-        #hamburger3-input {
-            display: none;
-        }
-        .hamburger3 label {
-            display: block;
-            cursor: pointer;
-        }
-        .hamburger3-lines {
-            position: relative;
-        }
-        .hamburger3-lines span {
-            display: block;
-            height: 3px;
-            margin: 5px 0;
-            border-radius: 5px;
-            background-color: #e5e7eb;
-            transition: all 0.3s ease-in-out;
-        }
-        #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(2) {
-            transform: scale(0);
-        }
-        #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
+        @keyframes typewriter {
+            0%, 10%, 100%  { width: 0; }
+            10%, 20%, 30%, 40%, 50%,
+            60%, 70%, 80%, 90%, 100% { border-right-color: transparent; }
+            11%, 21%, 31%, 41%, 51%,
+            61%, 71%, 81%, 91%       { border-right-color: #FF2D2D; }
+            60%, 80% { width: 100%; }
         }
 
-        /* ── Typewriter titles ── */
-        .text3 span {
+        @keyframes typewriter-left {
+            0%, 10%, 100%  { width: 0; }
+            10%, 20%, 30%, 40%, 50%,
+            60%, 70%, 80%, 90%, 100% { border-left-color: transparent; }
+            11%, 21%, 31%, 41%, 51%,
+            61%, 71%, 81%, 91%       { border-left-color: #FF2D2D; }
+            60%, 80% { width: 100%; }
+        }
+
+        .tw-title {
             color: transparent;
-            font-size: 1.875rem;
+            font-size: 2.25rem;
             font-weight: bold;
             position: relative;
             overflow: hidden;
             display: inline-block;
-            padding-right: 8px;
         }
-        .text3 span::before {
+        .tw-title::before {
             position: absolute;
             top: 0;
-            left: 0;
             width: 0;
             height: 100%;
-            border-right: 3px solid #FF2D2D;
             overflow: hidden;
             color: #e5e7eb;
-            animation: text3-animation 4s linear infinite;
             white-space: nowrap;
-            
         }
-        .text3-cosa span::before {
+
+        /* "Cosa faccio" — cursore a sinistra, testo cresce verso destra */
+        .tw-cosa-wrap { text-align: left; }
+        .tw-cosa { display: block; text-align: left; padding-left: 8px; }
+        .tw-cosa::before {
             content: "Cosa faccio";
+            left: 0;
+            right: auto;
+            border-left: 3px solid #FF2D2D;
+            animation: typewriter-left 3s linear infinite;
         }
-        .text3-contattami span::before {
+
+        /* "Contattami" — cursore a destra, testo cresce verso sinistra */
+        .tw-contattami-wrap { text-align: right; }
+        .tw-contattami { display: block; text-align: right; padding-right: 8px; }
+        .tw-contattami::before {
             content: "Contattami";
+            left: auto;
+            right: 0;
+            border-right: 3px solid #FF2D2D;
+            animation: typewriter 3s linear infinite;
         }
-        @keyframes text3-animation {
-            0%, 10%, 100% { width: 0; }
-            10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% { border-right-color: transparent; }
-            11%, 21%, 31%, 41%, 51%, 61%, 71%, 81%, 91% { border-right-color: #FF2D2D; }
-            60%, 80% { width: 100%; }
+
+        /* ── Nav link transition ── */
+        nav a, #mobile-menu a { transition: color 0.25s ease; }
+
+        /* ── Skill card hover ── */
+        .skill-card {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 1px solid transparent;
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+        .skill-card:hover {
+            background: #0f172a;
+            border-color: rgba(255, 45, 45, 0.25);
+            transform: translateY(-3px);
+        }
+
+        /* ── Contatti vertical divider ── */
+        .contatti-divider {
+            border-left: 1px solid rgba(255,255,255,0.07);
+            padding-left: 3rem;
+        }
+        @media (max-width: 1023px) {
+            .contatti-divider {
+                border-left: none;
+                padding-left: 0;
+                border-top: 1px solid rgba(255,255,255,0.07);
+                padding-top: 2rem;
+            }
         }
     </style>
 </head>
@@ -178,13 +188,11 @@
  
     <!-- HEADER -->
     <header class="bg-darker border-b border-gray-800 w-full">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
                 <img src="Logo.png" alt="Logo" class="w-[7rem] sm:w-[10rem]">
             </a>
  
-            <!-- DESKTOP NAV -->
             <nav class="hidden md:block">
                 <ul class="flex items-center text-gray-100 space-x-6">
                     <li><a class="text-rose-500" href="index.html">Home</a></li>
@@ -195,20 +203,16 @@
                 </ul>
             </nav>
  
-            <!-- HAMBURGER -->
             <div class="hamburger3 md:hidden">
                 <input type="checkbox" id="hamburger3-input" />
                 <label for="hamburger3-input">
                     <div class="hamburger3-lines">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span>
                     </div>
                 </label>
             </div>
         </div>
  
-        <!-- MOBILE NAV -->
         <div id="mobile-menu" class="hidden px-4 pb-6 w-full">
             <ul class="flex flex-col items-center gap-6 text-gray-100">
                 <li><a class="text-rose-500" href="index.html">Home</a></li>
@@ -221,32 +225,29 @@
     </header>
 
     <!-- HERO -->
-    <section class="py-20">
+    <section class="py-20 relative">
         <div class="absolute -z-10 top-32 left-20 w-96 h-96 bg-red-500/30 rounded-full blur-[120px]"></div>
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="absolute -z-10 top-32 right-20 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px]"></div>
 
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
                 <span class="inline-block px-7 py-5 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
                     Developer struppiato
                 </span>
-
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
                     Ehi, sono <span class="tron-font glitch" data-text="Dario">Dario</span>
                 </h1>
-
                 <p class="text-xl text-gray-400 mb-8 max-w-lg">
                     ed ho studiato i linguaggi e programmi più usati per la creazione di siti web e video.
                 </p>
-
                 <div class="flex gap-4">
                     <a href="progetti.html" class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">
                         I miei progetti
                     </a>
-                    <a href="contattami.html" class="px-8 py-3 rounded-lg border border-primary/30">
+                    <a href="contattami.html" class="px-8 py-3 rounded-lg border border-primary/30 transition hover:border-primary hover:text-primary">
                         Contattami
                     </a>
                 </div>
-
                 <div class="mt-10 flex flex-wrap gap-3">
                     <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">HTML/CSS</span>
                     <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Java</span>
@@ -255,67 +256,59 @@
                     <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Vegas PRO</span>
                 </div>
             </div>
-
             <div class="flex justify-center">
                 <div class="h-64 w-64 sm:h-80 sm:w-80 rounded-2xl overflow-hidden border-2 border-gray-800">
                     <img src="Immagine.jpeg" alt="Profilo" class="w-full h-full object-cover">
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- WHAT I DO -->
     <section class="py-20 max-w-7xl mx-auto px-4">
-        <h2 class="font-bold mb-12">
-            <div class="text3 text3-cosa"><span>Cosa faccio</span></div>
+        <h2 class="font-bold mb-12 tw-cosa-wrap">
+            <span class="tw-title tw-cosa">Cosa faccio</span>
         </h2>
 
-        <div class="grid lg:grid-cols-2 gap-10">
-
-            <div class="flex gap-4">
-                <ion-icon class="text-4xl text-tron" name="code-outline"></ion-icon>
+        <div class="grid lg:grid-cols-2 gap-6">
+            <div class="skill-card flex gap-4">
+                <ion-icon class="text-4xl text-tron shrink-0" name="code-outline"></ion-icon>
                 <div>
-                    <h3 class="text-xl font-semibold">Web Development</h3>
+                    <h3 class="text-xl font-semibold mb-1">Web Development</h3>
                     <p class="text-gray-400">Sviluppo siti moderni (o medievali) e responsive (ma in modo educato).</p>
                 </div>
             </div>
-
-            <div class="flex gap-4">
-                <ion-icon class="text-4xl text-tron" name="videocam-outline"></ion-icon>
+            <div class="skill-card flex gap-4">
+                <ion-icon class="text-4xl text-tron shrink-0" name="videocam-outline"></ion-icon>
                 <div>
-                    <h3 class="text-xl font-semibold">Video Editor</h3>
+                    <h3 class="text-xl font-semibold mb-1">Video Editor</h3>
                     <p class="text-gray-400">Editing e creazione di video montaggi.</p>
                 </div>
             </div>
-
-            <div class="flex gap-4">
-                <ion-icon class="text-4xl text-tron" name="server-outline"></ion-icon>
+            <div class="skill-card flex gap-4">
+                <ion-icon class="text-4xl text-tron shrink-0" name="server-outline"></ion-icon>
                 <div>
-                    <h3 class="text-xl font-semibold">Back-end</h3>
+                    <h3 class="text-xl font-semibold mb-1">Back-end</h3>
                     <p class="text-gray-400">Backend in crescita: API (e miele), database e logica applicativa.</p>
                 </div>
             </div>
-
-            <div class="flex gap-4">
-                <ion-icon class="text-4xl text-tron" name="phone-portrait-outline"></ion-icon>
+            <div class="skill-card flex gap-4">
+                <ion-icon class="text-4xl text-tron shrink-0" name="phone-portrait-outline"></ion-icon>
                 <div>
-                    <h3 class="text-xl font-semibold">Mobile</h3>
+                    <h3 class="text-xl font-semibold mb-1">Mobile</h3>
                     <p class="text-gray-400">App fluide e performanti (un giorno).</p>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- CONTATTI -->
-    <section id="contatti" class="py-20 max-w-7xl mx-auto px-4 bg-darker text-gray-200">
-        <h2 class="font-bold mb-12">
-            <div class="text3 text3-contattami"><span>Contattami</span></div>
+    <section id="contatti" class="py-20 max-w-7xl mx-auto px-4 text-gray-200 relative">
+        <h2 class="font-bold mb-12 tw-contattami-wrap">
+            <span class="tw-title tw-contattami">Contattami</span>
         </h2>
 
-        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-start">
-
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
             <!-- FORM -->
             <div class="bg-dark border border-gray-800 rounded-2xl p-8 shadow-2xl">
                 <form class="space-y-6">
@@ -338,9 +331,9 @@
             </div>
 
             <!-- INFO -->
-            <div class="pt-12">
+            <div class="contatti-divider pt-4">
                 <h3 class="text-2xl font-semibold mb-8">Info di contatto</h3>
-                <div class="space-y-10 text-gray-400">
+                <div class="space-y-8 text-gray-400">
                     <div>
                         <p class="text-sm uppercase text-tron mb-1">Telefono</p>
                         <p>+39 3663190567</p>
@@ -355,28 +348,30 @@
                     </div>
                     <div>
                         <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
-                            class="px-8 py-3 rounded-lg bg-gradient-to-r from-troll to-lol text-white font-semibold">
+                            class="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-troll to-lol text-white font-semibold hover:opacity-80 transition">
                             Cliccami...
                         </a>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <hr>
+    <hr class="border-gray-800">
 
-    <footer class="flex flex-col space-y-10 justify-center m-10">
+    <footer class="flex flex-col space-y-6 justify-center m-10">
         <div class="flex justify-center space-x-5">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/fluent/30/000000/facebook-new.png" />
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+               class="text-gray-400 hover:text-blue-500 transition text-2xl">
+                <i class="fab fa-facebook"></i>
             </a>
-            <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/fluent/30/000000/linkedin-2.png" />
+            <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer"
+               class="text-gray-400 hover:text-blue-400 transition text-2xl">
+                <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer">
-                <img src="https://img.icons8.com/fluent/30/000000/instagram-new.png" />
+            <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer"
+               class="text-gray-400 hover:text-pink-500 transition text-2xl">
+                <i class="fab fa-instagram"></i>
             </a>
         </div>
         <p class="text-center text-gray-700 font-medium">&copy; 2026 Darschys. All rights reserved.</p>
@@ -385,11 +380,9 @@
     <script>
         const checkbox = document.getElementById("hamburger3-input");
         const menu = document.getElementById("mobile-menu");
- 
         checkbox.addEventListener("change", () => {
             menu.classList.toggle("hidden", !checkbox.checked);
         });
- 
         menu.querySelectorAll("a").forEach(a => {
             a.addEventListener("click", () => {
                 menu.classList.add("hidden");
@@ -398,5 +391,4 @@
         });
     </script>
 </body>
-
 </html>

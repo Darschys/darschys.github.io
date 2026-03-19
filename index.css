@@ -1,6 +1,7 @@
+/* ── Hamburger3 ── */
 .hamburger3 {
   position: relative;
-  width: 10px; /* era 45px */
+  width: 30px;
 }
 #hamburger3-input {
   display: none;
@@ -14,78 +15,18 @@
 }
 .hamburger3-lines span {
   display: block;
-  height: 3px;  /* era 5px */
-  margin: 5px 0; /* era 7px */
+  height: 3px;
+  margin: 5px 0;
   border-radius: 5px;
-  background-color: #e5e7eb; /* era #000 */
+  background-color: #e5e7eb;
   transition: all 0.3s ease-in-out;
 }
 #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg); /* aggiornato da 12px */
+  transform: translateY(8px) rotate(45deg);
 }
 #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(2) {
   transform: scale(0);
 }
 #hamburger3-input:checked ~ label .hamburger3-lines span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg); /* aggiornato da -12px */
-}
-
-
-.text3 span {
-  color: transparent;
-  font-size: 26px;
-  font-weight: bold;
-  position: relative;
-  overflow: hidden;
-}
-
-.text3 span::before {
-  content: "Text...";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  border-right: 3px solid #FF2D2D;
-  overflow: hidden;
-  color: black;
-  animation: text3-animation 2s linear infinite;
-}
-
-@keyframes text3-animation {
-  0%,
-  10%,
-  100% {
-    width: 0;
-  }
-
-  10%,
-  20%,
-  30%,
-  40%,
-  50%,
-  60%,
-  70%,
-  80%,
-  90%,
-  100% {
-    border-right-color: transparent;
-  }
-
-  11%,
-  21%,
-  31%,
-  41%,
-  51%,
-  61%,
-  71%,
-  81%,
-  91% {
-    border-right-color: #FF2D2D;
-  }
-
-  60%,
-  80% {
-    width: 100%;
-  }
+  transform: translateY(-8px) rotate(-45deg);
 }
