@@ -1,67 +1,142 @@
 <!DOCTYPE html>
 <html lang="it">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dario Scalabrino | Developer struppiato</title>
- 
+    <script>
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
- 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
- 
-    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
- 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { inter: ['Inter', 'sans-serif'] },
                     colors: {
-                        dark: '#0f172a',
-                        darker: '#020617',
-                        primary: '#6366f1',
-                        secondary: '#8b5cf6',
-                        accent: '#ec4899',
-                        tron: '#FF2D2D',
-                        troll: '#290f57',
-                        lol:'#4a0e15',
+                        dark: '#0f172a', darker: '#020617',
+                        primary: '#6366f1', secondary: '#8b5cf6',
+                        accent: '#ec4899', tron: '#FF2D2D',
+                        troll: '#290f57', lol: '#4a0e15',
                     }
                 }
             }
         }
     </script>
- 
     <style>
         @font-face {
             font-family: 'TRON';
             src: url('TRON.TTF') format('truetype');
         }
- 
+
         .tron-font {
             font-family: 'TRON', sans-serif;
             color: #FF2D2D;
-            text-shadow:
-                0 0 4px #FF2D2D,
-                0 0 10px rgba(255, 45, 45, 0.6);
+            text-shadow: 0 0 4px #FF2D2D, 0 0 10px rgba(255, 45, 45, 0.6);
         }
- 
-        html { scroll-behavior: smooth; }
- 
-        .glitch { position: relative; display: inline-block; }
-        .glitch::before, .glitch::after {
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ════════════════════════
+           LIGHT MODE
+        ════════════════════════ */
+        body.light .glitch::before {
+            color: #FF2D2D;
+            text-shadow: 0 0 10px rgba(255, 45, 45, 0.6);
+        }
+
+        body.light .glitch::after {
+            color: #FF2D2D;
+            text-shadow: 0 0 10px rgba(255, 45, 45, 0.6);
+        }
+
+        body.light .blob-red {
+            background-color: rgba(0, 188, 212, 0.30) !important;
+        }
+
+        body.light .blob-blue {
+            background-color: rgba(220, 240, 255, 0.15) !important;
+        }
+
+        body.light .tron-font {
+            color: #00bcd4;
+            text-shadow: 0 0 4px #00bcd4, 0 0 14px rgba(0, 188, 212, 0.7);
+        }
+
+        body.light ion-icon.text-tron {
+            color: #00bcd4 !important;
+        }
+
+        body.light .text-tron {
+            color: #00bcd4 !important;
+        }
+
+        body.light .skill-card:hover {
+            border-color: rgba(0, 188, 212, 0.35) !important;
+        }
+
+        body.light nav a.text-rose-500,
+        body.light #mobile-menu a.text-rose-500 {
+            color: #00bcd4 !important;
+        }
+
+        body.light nav a:hover,
+        body.light #mobile-menu a:hover {
+            color: #00bcd4 !important;
+        }
+
+        body.light .tw-chisono::before {
+            border-right-color: #00bcd4 !important;
+            animation-name: typewriter-right-cyan;
+        }
+
+        body.light .tw-cosafaccio::before {
+            border-left-color: #00bcd4 !important;
+            animation-name: typewriter-left-cyan;
+        }
+
+        body.light .tw-contattami::before {
+            color: #e5e7eb;
+            border-right-color: #00bcd4 !important;
+            animation-name: text3-animation-cyan;
+        }
+
+        body.light .toggle5 input:checked+span {
+            box-shadow: 1px 1px 5px 0 #00bcd4 inset !important;
+        }
+
+        body.light .toggle5 input:checked+span:before {
+            background-color: #00bcd4 !important;
+            box-shadow: inset -1px 1px 2px 0px #80deea !important;
+        }
+
+        /* ════════════════════════
+           GLITCH
+        ════════════════════════ */
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch::before,
+        .glitch::after {
             content: attr(data-text);
             font-family: 'TRON', sans-serif;
             position: absolute;
-            left: 0; top: 0;
+            left: 0;
+            top: 0;
             width: 100%;
             white-space: nowrap;
             pointer-events: none;
@@ -69,47 +144,246 @@
             mix-blend-mode: screen;
             line-height: 1.2;
         }
+
         .glitch::before {
             color: #17BEBB;
             text-shadow: 0 0 10px rgba(23, 190, 187, 0.6);
             animation: glitch1 1.5s infinite;
         }
+
         .glitch::after {
             color: #A855F7;
             text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
             animation: glitch2 1.8s infinite;
         }
+
         @keyframes glitch1 {
-            0%,  72% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
-            73%       { opacity: .75; transform: translate(-2px, -1px); clip-path: inset(0 0 55% 0); }
-            74%       { opacity: .2;  transform: translate(1px, 0);     clip-path: inset(35% 0 15% 0); }
-            75%       { opacity: .65; transform: translate(-1px, 1px);  clip-path: inset(10% 0 70% 0); }
-            76%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+
+            0%,
+            72% {
+                opacity: 0;
+                transform: translateY(0.04em);
+                clip-path: inset(0 0 0 0);
+            }
+
+            73% {
+                opacity: .75;
+                transform: translate(-2px, -1px);
+                clip-path: inset(0 0 55% 0);
+            }
+
+            74% {
+                opacity: .2;
+                transform: translate(1px, 0);
+                clip-path: inset(35% 0 15% 0);
+            }
+
+            75% {
+                opacity: .65;
+                transform: translate(-1px, 1px);
+                clip-path: inset(10% 0 70% 0);
+            }
+
+            76%,
+            100% {
+                opacity: 0;
+                transform: translateY(0.04em);
+                clip-path: inset(0 0 0 0);
+            }
         }
+
         @keyframes glitch2 {
-            0%,  68% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
-            69%       { opacity: .7;  transform: translate(2px, 1px);   clip-path: inset(40% 0 10% 0); }
-            70%       { opacity: .25; transform: translate(-1px, 0);    clip-path: inset(0 0 60% 0); }
-            71%       { opacity: .6;  transform: translate(1px, -1px);  clip-path: inset(55% 0 0 0); }
-            72%, 100% { opacity: 0; transform: translateY(0.04em); clip-path: inset(0 0 0 0); }
+
+            0%,
+            68% {
+                opacity: 0;
+                transform: translateY(0.04em);
+                clip-path: inset(0 0 0 0);
+            }
+
+            69% {
+                opacity: .7;
+                transform: translate(2px, 1px);
+                clip-path: inset(40% 0 10% 0);
+            }
+
+            70% {
+                opacity: .25;
+                transform: translate(-1px, 0);
+                clip-path: inset(0 0 60% 0);
+            }
+
+            71% {
+                opacity: .6;
+                transform: translate(1px, -1px);
+                clip-path: inset(55% 0 0 0);
+            }
+
+            72%,
+            100% {
+                opacity: 0;
+                transform: translateY(0.04em);
+                clip-path: inset(0 0 0 0);
+            }
         }
 
-        @keyframes typewriter {
-            0%, 10%, 100%  { width: 0; }
-            10%, 20%, 30%, 40%, 50%,
-            60%, 70%, 80%, 90%, 100% { border-right-color: transparent; }
-            11%, 21%, 31%, 41%, 51%,
-            61%, 71%, 81%, 91%       { border-right-color: #FF2D2D; }
-            60%, 80% { width: 100%; }
+        /* ════════════════════════
+           TYPEWRITER
+        ════════════════════════ */
+        @keyframes typewriter-left-red {
+
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                border-left-color: transparent;
+            }
+
+            11%,
+            21%,
+            31%,
+            41%,
+            51%,
+            61%,
+            71%,
+            81%,
+            91% {
+                border-left-color: #FF2D2D;
+            }
+
+            60%,
+            80% {
+                width: 100%;
+            }
         }
 
-        @keyframes typewriter-left {
-            0%, 10%, 100%  { width: 0; }
-            10%, 20%, 30%, 40%, 50%,
-            60%, 70%, 80%, 90%, 100% { border-left-color: transparent; }
-            11%, 21%, 31%, 41%, 51%,
-            61%, 71%, 81%, 91%       { border-left-color: #FF2D2D; }
-            60%, 80% { width: 100%; }
+        @keyframes typewriter-left-cyan {
+
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                border-left-color: transparent;
+            }
+
+            11%,
+            21%,
+            31%,
+            41%,
+            51%,
+            61%,
+            71%,
+            81%,
+            91% {
+                border-left-color: #00bcd4;
+            }
+
+            60%,
+            80% {
+                width: 100%;
+            }
+        }
+
+        @keyframes typewriter-right-red {
+
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                border-right-color: transparent;
+            }
+
+            11%,
+            21%,
+            31%,
+            41%,
+            51%,
+            61%,
+            71%,
+            81%,
+            91% {
+                border-right-color: #FF2D2D;
+            }
+
+            60%,
+            80% {
+                width: 100%;
+            }
+        }
+
+        @keyframes typewriter-right-cyan {
+
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                border-right-color: transparent;
+            }
+
+            11%,
+            21%,
+            31%,
+            41%,
+            51%,
+            61%,
+            71%,
+            81%,
+            91% {
+                border-right-color: #00bcd4;
+            }
+
+            60%,
+            80% {
+                width: 100%;
+            }
         }
 
         .tw-title {
@@ -120,6 +394,7 @@
             overflow: hidden;
             display: inline-block;
         }
+
         .tw-title::before {
             position: absolute;
             top: 0;
@@ -130,70 +405,280 @@
             white-space: nowrap;
         }
 
-        /* "Cosa faccio" — cursore a sinistra, testo cresce verso destra */
-        .tw-cosa-wrap { text-align: left; }
-        .tw-cosa { display: block; text-align: left; padding-left: 8px; }
-        .tw-cosa::before {
+        .tw-chisono-wrap {
+            text-align: right;
+        }
+
+        .tw-chisono {
+            display: block;
+            text-align: right;
+            padding-right: 8px;
+        }
+
+        .tw-chisono::before {
+            content: "Chi sono";
+            left: auto;
+            right: 0;
+            border-right: 3px solid #FF2D2D;
+            animation: typewriter-right-red 3s linear infinite;
+        }
+
+        .tw-cosafaccio-wrap {
+            text-align: left;
+        }
+
+        .tw-cosafaccio {
+            display: block;
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        .tw-cosafaccio::before {
             content: "Cosa faccio";
             left: 0;
             right: auto;
             border-left: 3px solid #FF2D2D;
-            animation: typewriter-left 3s linear infinite;
+            animation: typewriter-left-red 3s linear infinite;
         }
 
-        /* "Contattami" — cursore a destra, testo cresce verso sinistra */
-        .tw-contattami-wrap { text-align: right; }
-        .tw-contattami { display: block; text-align: right; padding-right: 8px; }
+        .tw-contattami-wrap {
+            text-align: center;
+        }
+
+        .tw-contattami {
+            color: transparent;
+            font-size: 2.25rem;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            padding-right: 8px;
+        }
+
         .tw-contattami::before {
             content: "Contattami";
-            left: auto;
-            right: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
             border-right: 3px solid #FF2D2D;
-            animation: typewriter 3s linear infinite;
+            overflow: hidden;
+            color: #e5e7eb;
+            white-space: nowrap;
+            animation: text3-animation 3s linear infinite;
         }
 
-        /* ── Nav link transition ── */
-        nav a, #mobile-menu a { transition: color 0.25s ease; }
+        @keyframes text3-animation {
 
-        /* ── Skill card hover ── */
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                border-right-color: transparent;
+            }
+
+            11%,
+            21%,
+            31%,
+            41%,
+            51%,
+            61%,
+            71%,
+            81%,
+            91% {
+                border-right-color: #FF2D2D;
+            }
+
+            60%,
+            80% {
+                width: 100%;
+            }
+        }
+
+        @keyframes text3-animation-cyan {
+
+            0%,
+            10%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            20%,
+            30%,
+            40%,
+            50%,
+            60%,
+            70%,
+            80%,
+            90%,
+            100% {
+                border-right-color: transparent;
+            }
+
+            11%,
+            21%,
+            31%,
+            41%,
+            51%,
+            61%,
+            71%,
+            81%,
+            91% {
+                border-right-color: #00bcd4;
+            }
+
+            60%,
+            80% {
+                width: 100%;
+            }
+        }
+
+        /* SKILL CARD */
         .skill-card {
             padding: 1.25rem;
             border-radius: 1rem;
             border: 1px solid transparent;
             transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
         }
+
         .skill-card:hover {
             background: #0f172a;
             border-color: rgba(255, 45, 45, 0.25);
             transform: translateY(-3px);
         }
 
-        /* ── Contatti vertical divider ── */
+        /* CONTATTI DIVIDER */
         .contatti-divider {
-            border-left: 1px solid rgba(255,255,255,0.07);
+            border-left: 1px solid rgba(255, 255, 255, 0.07);
             padding-left: 3rem;
         }
-        @media (max-width: 1023px) {
+
+        @media (max-width:1023px) {
             .contatti-divider {
                 border-left: none;
                 padding-left: 0;
-                border-top: 1px solid rgba(255,255,255,0.07);
+                border-top: 1px solid rgba(255, 255, 255, 0.07);
                 padding-top: 2rem;
             }
         }
+
+        /* HAMBURGER3 */
+        .hamburger3 {
+            position: relative;
+            width: 30px;
+        }
+
+        #hamburger3-input {
+            display: none;
+        }
+
+        .hamburger3 label {
+            display: block;
+            cursor: pointer;
+        }
+
+        .hamburger3-lines {
+            position: relative;
+        }
+
+        .hamburger3-lines span {
+            display: block;
+            height: 3px;
+            margin: 5px 0;
+            border-radius: 5px;
+            background-color: #e5e7eb;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #hamburger3-input:checked~label .hamburger3-lines span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #hamburger3-input:checked~label .hamburger3-lines span:nth-child(2) {
+            transform: scale(0);
+        }
+
+        #hamburger3-input:checked~label .hamburger3-lines span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* TOGGLE5 */
+        .toggle5-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle5 {
+            position: relative;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle5 input {
+            display: none;
+        }
+
+        .toggle5 span {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 34px;
+            background-color: transparent;
+            transition: 0.4s;
+            box-shadow: 1px 1px 5px 0 #b93c53 inset;
+        }
+
+        .toggle5 span:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: #b93c53;
+            transition: 0.4s;
+            border-radius: 50%;
+            box-shadow: inset 1px 1px 2px 0px #e64d69;
+        }
+
+        .toggle5 input:checked+span {
+            box-shadow: 1px 1px 5px 0 #00bcd4 inset;
+        }
+
+        .toggle5 input:checked+span:before {
+            transform: translateX(24px);
+            background-color: #00bcd4;
+            box-shadow: inset -1px 1px 2px 0px #80deea;
+        }
     </style>
 </head>
- 
+
 <body class="font-inter bg-darker text-gray-200 scroll-smooth overflow-x-hidden">
- 
+
     <!-- HEADER -->
     <header class="bg-darker border-b border-gray-800 w-full">
         <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-3">
-                <img src="Logo.png" alt="Logo" class="w-[7rem] sm:w-[10rem]">
+                <img id="site-logo" src="Logo_rosso.png" class="h-8">
             </a>
- 
-            <nav class="hidden md:block">
+            <nav class="hidden md:flex items-center gap-6">
                 <ul class="flex items-center text-gray-100 space-x-6">
                     <li><a class="text-rose-500" href="index.html">Home</a></li>
                     <li><a class="hover:text-rose-500" href="studi.html">Studi</a></li>
@@ -201,18 +686,22 @@
                     <li><a class="hover:text-rose-500" href="progetti.html">Progetti</a></li>
                     <li><a class="hover:text-rose-500" href="#contatti">Contatti</a></li>
                 </ul>
+                <div class="toggle5-container ml-2">
+                    <label class="toggle5"><input type="checkbox" id="theme-toggle-desktop" /><span></span></label>
+                </div>
             </nav>
- 
-            <div class="hamburger3 md:hidden">
-                <input type="checkbox" id="hamburger3-input" />
-                <label for="hamburger3-input">
-                    <div class="hamburger3-lines">
-                        <span></span><span></span><span></span>
-                    </div>
-                </label>
+            <div class="flex items-center gap-4 md:hidden">
+                <div class="toggle5-container">
+                    <label class="toggle5"><input type="checkbox" id="theme-toggle-mobile" /><span></span></label>
+                </div>
+                <div class="hamburger3">
+                    <input type="checkbox" id="hamburger3-input" />
+                    <label for="hamburger3-input">
+                        <div class="hamburger3-lines"><span></span><span></span><span></span></div>
+                    </label>
+                </div>
             </div>
         </div>
- 
         <div id="mobile-menu" class="hidden px-4 pb-6 w-full">
             <ul class="flex flex-col items-center gap-6 text-gray-100">
                 <li><a class="text-rose-500" href="index.html">Home</a></li>
@@ -226,27 +715,25 @@
 
     <!-- HERO -->
     <section class="py-20 relative">
-        <div class="absolute -z-10 top-32 left-20 w-96 h-96 bg-red-500/30 rounded-full blur-[120px]"></div>
-        <div class="absolute -z-10 top-32 right-20 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px]"></div>
-
+        <div class="blob-red absolute -z-10 top-32 left-20 w-96 h-96 bg-red-500/30 rounded-full blur-[120px]"></div>
+        <div class="blob-blue absolute -z-10 top-32 right-20 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px]">
+        </div>
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="inline-block px-7 py-5 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">
-                    Developer struppiato
-                </span>
+            <div data-aos="fade-right" data-aos-duration="900">
+                <span
+                    class="inline-block px-7 py-5 text-xs font-semibold text-primary uppercase rounded-full bg-primary/10 mb-4">Developer
+                    struppiato</span>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">
-                    Ehi, sono <span class="tron-font glitch" data-text="Dario">Dario</span>
+                    Yo!, sono <span class="tron-font glitch" data-text="Dario">Dario</span>
                 </h1>
-                <p class="text-xl text-gray-400 mb-8 max-w-lg">
-                    ed ho studiato i linguaggi e programmi più usati per la creazione di siti web e video.
-                </p>
+                <p class="text-xl text-gray-400 mb-8 max-w-lg">ed ho studiato i linguaggi e programmi più usati per la
+                    creazione di siti web e video.</p>
                 <div class="flex gap-4">
-                    <a href="progetti.html" class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">
-                        I miei progetti
-                    </a>
-                    <a href="contattami.html" class="px-8 py-3 rounded-lg border border-primary/30 transition hover:border-primary hover:text-primary">
-                        Contattami
-                    </a>
+                    <a href="progetti.html"
+                        class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold">I
+                        miei progetti</a>
+                    <a href="contattami.html"
+                        class="px-8 py-3 rounded-lg border border-primary/30 transition hover:border-primary hover:text-primary">Contattami</a>
                 </div>
                 <div class="mt-10 flex flex-wrap gap-3">
                     <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">HTML/CSS</span>
@@ -256,43 +743,89 @@
                     <span class="px-3 py-1 text-sm rounded-full bg-dark border border-gray-800">Vegas PRO</span>
                 </div>
             </div>
-            <div class="flex justify-center">
+            <div class="flex justify-center" data-aos="fade-left" data-aos-duration="900">
                 <div class="h-64 w-64 sm:h-80 sm:w-80 rounded-2xl overflow-hidden border-2 border-gray-800">
-                    <img src="Immagine.jpeg" alt="Profilo" class="w-full h-full object-cover">
+                    <img id="profile-img" src="Immagine_scura.png" alt="Profilo" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WHAT I DO -->
+    <!-- CHI SONO -->
     <section class="py-20 max-w-7xl mx-auto px-4">
-        <h2 class="font-bold mb-12 tw-cosa-wrap">
-            <span class="tw-title tw-cosa">Cosa faccio</span>
+        <h2 class="font-bold mb-12 tw-chisono-wrap" data-aos="fade-up"><span class="tw-title tw-chisono">Chi sono</span>
         </h2>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
 
+            <div class="flex justify-center order-2 lg:order-1" data-aos="fade-right" data-aos-duration="900">
+                <div class="relative">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border-2 border-gray-800">
+                        <img id="chisono-img" src="Cosplay_rosso.jpeg" alt="Chi sono"
+                            class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-5 text-gray-400 text-lg leading-relaxed order-1 lg:order-2" data-aos="fade-left"
+                data-aos-duration="900">
+                <p>Appassionato di tecnologia e videogiochi sin da piccolo, ho iniziato a creare montaggi video sulle
+                    mie clip di gioco, sviluppando così la passione per il video editing.</p>
+                <p>Col tempo è nata anche la curiosità per la programmazione, un percorso che sto ancora costruendo
+                    giorno dopo giorno — e questo portfolio è un piccolo pezzo del puzzle!</p>
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="bg-dark border border-gray-800 rounded-xl p-4 flex items-center gap-3"
+                        data-aos="fade-up" data-aos-delay="0">
+                        <ion-icon class="text-2xl text-tron shrink-0" name="game-controller-outline"></ion-icon>
+                        <span class="text-sm text-gray-300">Gamer/Cosplayer</span>
+                    </div>
+                    <div class="bg-dark border border-gray-800 rounded-xl p-4 flex items-center gap-3"
+                        data-aos="fade-up" data-aos-delay="100">
+                        <ion-icon class="text-2xl text-tron shrink-0" name="videocam-outline"></ion-icon>
+                        <span class="text-sm text-gray-300">Video editor</span>
+                    </div>
+                    <div class="bg-dark border border-gray-800 rounded-xl p-4 flex items-center gap-3"
+                        data-aos="fade-up" data-aos-delay="200">
+                        <ion-icon class="text-2xl text-tron shrink-0" name="code-slash-outline"></ion-icon>
+                        <span class="text-sm text-gray-300">Dev in crescita</span>
+                    </div>
+                    <div class="bg-dark border border-gray-800 rounded-xl p-4 flex items-center gap-3"
+                        data-aos="fade-up" data-aos-delay="300">
+                        <ion-icon class="text-2xl text-tron shrink-0" name="location-outline"></ion-icon>
+                        <span class="text-sm text-gray-300">Italia 🇮🇹</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- COSA FACCIO -->
+    <section class="py-20 max-w-7xl mx-auto px-4">
+        <h2 class="font-bold mb-12 tw-cosafaccio-wrap" data-aos="fade-up"><span class="tw-title tw-cosafaccio">Cosa
+                faccio</span></h2>
         <div class="grid lg:grid-cols-2 gap-6">
-            <div class="skill-card flex gap-4">
+            <div class="skill-card flex gap-4" data-aos="fade-up" data-aos-delay="0">
                 <ion-icon class="text-4xl text-tron shrink-0" name="code-outline"></ion-icon>
                 <div>
                     <h3 class="text-xl font-semibold mb-1">Web Development</h3>
                     <p class="text-gray-400">Sviluppo siti moderni (o medievali) e responsive (ma in modo educato).</p>
                 </div>
             </div>
-            <div class="skill-card flex gap-4">
+            <div class="skill-card flex gap-4" data-aos="fade-up" data-aos-delay="100">
                 <ion-icon class="text-4xl text-tron shrink-0" name="videocam-outline"></ion-icon>
                 <div>
                     <h3 class="text-xl font-semibold mb-1">Video Editor</h3>
                     <p class="text-gray-400">Editing e creazione di video montaggi.</p>
                 </div>
             </div>
-            <div class="skill-card flex gap-4">
+            <div class="skill-card flex gap-4" data-aos="fade-up" data-aos-delay="200">
                 <ion-icon class="text-4xl text-tron shrink-0" name="server-outline"></ion-icon>
                 <div>
                     <h3 class="text-xl font-semibold mb-1">Back-end</h3>
                     <p class="text-gray-400">Backend in crescita: API (e miele), database e logica applicativa.</p>
                 </div>
             </div>
-            <div class="skill-card flex gap-4">
+            <div class="skill-card flex gap-4" data-aos="fade-up" data-aos-delay="300">
                 <ion-icon class="text-4xl text-tron shrink-0" name="phone-portrait-outline"></ion-icon>
                 <div>
                     <h3 class="text-xl font-semibold mb-1">Mobile</h3>
@@ -304,34 +837,33 @@
 
     <!-- CONTATTI -->
     <section id="contatti" class="py-20 max-w-7xl mx-auto px-4 text-gray-200 relative">
-        <h2 class="font-bold mb-12 tw-contattami-wrap">
-            <span class="tw-title tw-contattami">Contattami</span>
+        <h2 class="font-bold mb-12 tw-contattami-wrap" data-aos="fade-up"><span class="tw-contattami">Contattami</span>
         </h2>
-
         <div class="grid lg:grid-cols-2 gap-12 items-start">
-            <!-- FORM -->
-            <div class="bg-dark border border-gray-800 rounded-2xl p-8 shadow-2xl">
+            <div class="bg-dark border border-gray-800 rounded-2xl p-8 shadow-2xl" data-aos="fade-right"
+                data-aos-duration="900">
                 <form class="space-y-6">
                     <div>
                         <label class="block mb-2 text-sm text-gray-400">Nome e Cognome</label>
-                        <input type="text" placeholder="Il tuo nome" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary" />
+                        <input type="text" placeholder="Il tuo nome"
+                            class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary" />
                     </div>
                     <div>
                         <label class="block mb-2 text-sm text-gray-400">Email</label>
-                        <input type="email" placeholder="La tua email" class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary" />
+                        <input type="email" placeholder="La tua email"
+                            class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary" />
                     </div>
                     <div>
                         <label class="block mb-2 text-sm text-gray-400">Messaggio</label>
-                        <textarea rows="5" placeholder="Scrivi qualcosa..." class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                        <textarea rows="5" placeholder="Scrivi qualcosa..."
+                            class="w-full px-4 py-3 rounded-lg bg-darker border border-gray-700 text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
                     </div>
-                    <button type="submit" class="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition">
-                        Invia messaggio
-                    </button>
+                    <button type="submit"
+                        class="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold hover:opacity-90 transition">Invia
+                        messaggio</button>
                 </form>
             </div>
-
-            <!-- INFO -->
-            <div class="contatti-divider pt-4">
+            <div class="contatti-divider pt-4" data-aos="fade-left" data-aos-duration="900">
                 <h3 class="text-2xl font-semibold mb-8">Info di contatto</h3>
                 <div class="space-y-8 text-gray-400">
                     <div>
@@ -348,9 +880,7 @@
                     </div>
                     <div>
                         <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
-                            class="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-troll to-lol text-white font-semibold hover:opacity-80 transition">
-                            Cliccami...
-                        </a>
+                            class="inline-block px-8 py-3 rounded-lg bg-gradient-to-r from-troll to-lol text-white font-semibold hover:opacity-80 transition">Cliccami...</a>
                     </div>
                 </div>
             </div>
@@ -359,36 +889,48 @@
 
     <hr class="border-gray-800">
 
-    <footer class="flex flex-col space-y-6 justify-center m-10">
+    <footer class="flex flex-col space-y-6 justify-center m-10" data-aos="fade-up">
         <div class="flex justify-center space-x-5">
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-blue-500 transition text-2xl">
-                <i class="fab fa-facebook"></i>
-            </a>
+                class="text-gray-400 hover:text-blue-500 transition text-2xl"><i class="fab fa-facebook"></i></a>
             <a href="https://www.linkedin.com/in/dario-scalabrino-35b403386/" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-blue-400 transition text-2xl">
-                <i class="fab fa-linkedin"></i>
-            </a>
+                class="text-gray-400 hover:text-blue-400 transition text-2xl"><i class="fab fa-linkedin"></i></a>
             <a href="https://www.instagram.com/darschys/" target="_blank" rel="noopener noreferrer"
-               class="text-gray-400 hover:text-pink-500 transition text-2xl">
-                <i class="fab fa-instagram"></i>
-            </a>
+                class="text-gray-400 hover:text-pink-500 transition text-2xl"><i class="fab fa-instagram"></i></a>
         </div>
         <p class="text-center text-gray-700 font-medium">&copy; 2026 Darschys. All rights reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init({ duration: 800, once: true, easing: 'ease-out-cubic' });
+
         const checkbox = document.getElementById("hamburger3-input");
         const menu = document.getElementById("mobile-menu");
-        checkbox.addEventListener("change", () => {
-            menu.classList.toggle("hidden", !checkbox.checked);
-        });
-        menu.querySelectorAll("a").forEach(a => {
-            a.addEventListener("click", () => {
-                menu.classList.add("hidden");
-                checkbox.checked = false;
-            });
-        });
+        checkbox.addEventListener("change", () => menu.classList.toggle("hidden", !checkbox.checked));
+        menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+            menu.classList.add("hidden"); checkbox.checked = false;
+        }));
+
+        const toggleDesktop = document.getElementById("theme-toggle-desktop");
+        const toggleMobile = document.getElementById("theme-toggle-mobile");
+        const logo = document.getElementById("site-logo");
+
+        function applyTheme(isLight) {
+            document.body.classList.toggle("light", isLight);
+            toggleDesktop.checked = isLight;
+            toggleMobile.checked = isLight;
+            logo.src = isLight ? "Logo_blu.png" : "Logo_rosso.png";
+            document.getElementById("profile-img").src = isLight ? "Immagine_chiara.jpeg" : "Immagine_scura.png";
+            document.getElementById("chisono-img").src = isLight ? "Cosplay_blu.png" : "Cosplay_rosso.jpeg";
+            localStorage.setItem("theme", isLight ? "light" : "dark");
+        }
+
+        if (localStorage.getItem("theme") === "light") applyTheme(true);
+
+        toggleDesktop.addEventListener("change", () => applyTheme(toggleDesktop.checked));
+        toggleMobile.addEventListener("change", () => applyTheme(toggleMobile.checked));
     </script>
 </body>
+
 </html>
